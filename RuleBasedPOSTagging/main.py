@@ -50,6 +50,7 @@ class POSTag(object):
                 inputValue = input.split("_")
                 inputValue[1] = self.newTagTable[inputValue[0]]
                 newTagFile.write(inputValue[0]+"_"+inputValue[1]+" ")
+                print (inputValue[0]+"_"+inputValue[1]+" ")
             newTagFile.write("\n")
                 
         
@@ -57,8 +58,14 @@ class POSTag(object):
     
 trainingSetFile = open("HW2_F16_NLP6320_POSTaggedTrainingSet-Unix.txt", "r")
 print trainingSetFile.readline()
+print ("1")
 POSTagObject = POSTag(open("HW2_F16_NLP6320_POSTaggedTrainingSet-Unix.txt", "r"))
+print ("2")          
 POSTagObject.computeCondnProbTable()
+print ("3")
 POSTagObject.computeCondnProb()
+print ("4")
 POSTagObject.computeNewTags()
+print("5")
 POSTagObject.newTagFileWrite()
+print("6")
