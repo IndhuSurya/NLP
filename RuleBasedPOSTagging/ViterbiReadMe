@@ -1,0 +1,105 @@
+main.py :  Version 1.0 09/25/2016
+
+General Usage Notes
+-------------------
+
+-The program supports Python 2.7
+-The input to the program should be given as command line arguments 
+
+Program Description
+-------------------
+Programmatically implement the Viterbi algorithm and run it with the HMM to compute the most likely weather
+sequences for the following observation sequences,
+331122313
+331123312
+
+To run the program 
+-------------------
+
+In the terminal, enter the following commands:
+
+pip install pandas
+python viterbiProgram.py 331122313 313 331123312
+
+Observation
+-----------
+
+Input Sequence is 331122313
+State Transition Matrix
+       START  HOT  COLD  FINAL
+START      0  0.8   0.2      0
+HOT        0  0.7   0.3      1
+COLD       0  0.4   0.6      1
+State Observation Matrix
+   HOT  COLD
+1  0.2   0.5
+2  0.4   0.4
+3  0.4   0.1
+Path Probabiltiy Matrix
+          1       2         3           4           5            6  \
+HOT    0.32  0.0896  0.012544  0.00175616  0.00064512  0.000180634   
+COLD   0.02  0.0096   0.01344    0.004032  0.00096768  0.000232243   
+FINAL   NaN     NaN       NaN         NaN         NaN          NaN   
+
+                 7            8            9  
+HOT    5.05774e-05  7.08084e-06  1.98263e-06  
+COLD   1.39346e-05  7.58661e-06  4.55197e-07  
+FINAL          NaN          NaN  1.98263e-06  
+Back Pointer Matrix
+           1    2    3     4     5     6     7    8     9
+HOT    START  HOT  HOT   HOT  COLD   HOT   HOT  HOT   HOT
+COLD   START  HOT  HOT  COLD  COLD  COLD  COLD  HOT  COLD
+FINAL    NaN  NaN  NaN   NaN   NaN   NaN   NaN  NaN   HOT
+The most likely weather sequence for 331122313 is as follows
+['HOT', 'HOT', 'COLD', 'COLD', 'HOT', 'HOT', 'HOT', 'HOT', 'HOT']
+Input Sequence is 313
+State Transition Matrix
+       START  HOT  COLD  FINAL
+START      0  0.8   0.2      0
+HOT        0  0.7   0.3      1
+COLD       0  0.4   0.6      1
+State Observation Matrix
+   HOT  COLD
+1  0.2   0.5
+2  0.4   0.4
+3  0.4   0.1
+Path Probabiltiy Matrix
+          1       2         3
+HOT    0.32  0.0448  0.012544
+COLD   0.02   0.048   0.00288
+FINAL   NaN     NaN  0.012544
+Back Pointer Matrix
+           1    2     3
+HOT    START  HOT   HOT
+COLD   START  HOT  COLD
+FINAL    NaN  NaN   HOT
+The most likely weather sequence for 313 is as follows
+['HOT', 'HOT', 'HOT']
+Input Sequence is 331123312
+State Transition Matrix
+       START  HOT  COLD  FINAL
+START      0  0.8   0.2      0
+HOT        0  0.7   0.3      1
+COLD       0  0.4   0.6      1
+State Observation Matrix
+   HOT  COLD
+1  0.2   0.5
+2  0.4   0.4
+3  0.4   0.1
+Path Probabiltiy Matrix
+          1       2         3           4           5            6  \
+HOT    0.32  0.0896  0.012544  0.00175616  0.00064512  0.000180634   
+COLD   0.02  0.0096   0.01344    0.004032  0.00096768  5.80608e-05   
+FINAL   NaN     NaN       NaN         NaN         NaN          NaN   
+
+                 7            8            9  
+HOT    5.05774e-05  7.08084e-06  1.98263e-06  
+COLD   5.41901e-06  7.58661e-06  1.82079e-06  
+FINAL          NaN          NaN  1.98263e-06  
+Back Pointer Matrix
+           1    2    3     4     5     6    7    8     9
+HOT    START  HOT  HOT   HOT  COLD   HOT  HOT  HOT   HOT
+COLD   START  HOT  HOT  COLD  COLD  COLD  HOT  HOT  COLD
+FINAL    NaN  NaN  NaN   NaN   NaN   NaN  NaN  NaN   HOT
+The most likely weather sequence for 331123312 is as follows
+['HOT', 'HOT', 'COLD', 'COLD', 'HOT', 'HOT', 'HOT', 'HOT', 'HOT']
