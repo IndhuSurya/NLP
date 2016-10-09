@@ -1,4 +1,4 @@
-main.py :  Version 1.0 09/25/2016
+main.py :  Version 1.0 10/06/2016
 
 General Usage Notes
 -------------------
@@ -19,7 +19,7 @@ To run the program
 In the terminal, enter the following commands:
 
 pip install pandas
-python viterbiProgram.py 331122313 313 331123312
+python viterbiProgram.py 331122313 331123312
 
 Observation
 -----------
@@ -52,29 +52,7 @@ COLD   START  HOT  HOT  COLD  COLD  COLD  COLD  HOT  COLD
 FINAL    NaN  NaN  NaN   NaN   NaN   NaN   NaN  NaN   HOT
 The most likely weather sequence for 331122313 is as follows
 ['HOT', 'HOT', 'COLD', 'COLD', 'HOT', 'HOT', 'HOT', 'HOT', 'HOT']
-Input Sequence is 313
-State Transition Matrix
-       START  HOT  COLD  FINAL
-START      0  0.8   0.2      0
-HOT        0  0.7   0.3      1
-COLD       0  0.4   0.6      1
-State Observation Matrix
-   HOT  COLD
-1  0.2   0.5
-2  0.4   0.4
-3  0.4   0.1
-Path Probabiltiy Matrix
-          1       2         3
-HOT    0.32  0.0448  0.012544
-COLD   0.02   0.048   0.00288
-FINAL   NaN     NaN  0.012544
-Back Pointer Matrix
-           1    2     3
-HOT    START  HOT   HOT
-COLD   START  HOT  COLD
-FINAL    NaN  NaN   HOT
-The most likely weather sequence for 313 is as follows
-['HOT', 'HOT', 'HOT']
+
 Input Sequence is 331123312
 State Transition Matrix
        START  HOT  COLD  FINAL

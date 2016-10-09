@@ -1,0 +1,53 @@
+main.py :  Version 1.0 10/08/2016
+
+General Usage Notes
+-------------------
+
+-The program supports Python 2.7
+-The input to the program should be given as command line arguments 
+
+Program Description
+-------------------
+Compute for each word w the tag t that maximizes P(t|w). Retag the training file with POS tags
+that are most probable for a given word. Compute the error rate by comparing the
+retagged file against the original tagged file. Now perform error analysis to find the
+top-5 erroneously tagged words. Write at least five rules to do a better job of tagging
+these top-5 erroneously tagged words, and show the difference in error rates. 
+
+To run the program 
+-------------------
+
+In the terminal, enter the following commands:
+
+pip install pandas
+python main.py
+
+Observation
+-----------
+
+Rules applied:
+1) north succeeded by a word with a tag proper noun(NNP) will be an adjective(JJ)
+2) north preceded by a determinant(DT) will be a noun(NN)
+3) mid-January preceded by a noun(NN) and a (IN) respectively and followed by a (IN) will be an adjective(JJ)
+4) cut preceded by a noun(NN) will be a verb past tense(VBD)
+5) cut followed by a verb past tense(VBD) anywhere will be a verb past tense(VBD)
+6) retired followed by a noun(NN) will be an adjective(JJ) 
+7) -0- preceded by words containing a 7 either CD or RRB tagged will be a period(.)
+
+newTagFile.txt : File having words with most probable tags
+newFinalFile.txt : File after the rules have been applied
+
+Error Analysis after assigning most Probable Tags
+          Word  Tag  Error Probability
+0  mid-January   NN           0.666667
+1      retired  VBN           0.666667
+2          cut   VB           0.645161
+3        north   RB           0.600000
+4          -0-   CD           0.600000
+Error Analysis after applying rules
+          Word  New Error Probability
+0  mid-January               0.333333
+1      retired               0.333333
+2          cut               0.451613
+3        north               0.200000
+4          -0-               0.200000
